@@ -29,6 +29,7 @@ import { Route as AppEquipeRouteImport } from './routes/app.equipe'
 import { Route as AppFinanceiroRouteImport } from './routes/app.financeiro'
 import { Route as AppOnboardingRouteImport } from './routes/app.onboarding'
 import { Route as AppPdvRouteImport } from './routes/app.pdv'
+import { Route as AppProdutosRouteImport } from './routes/app.produtos'
 import { Route as AppProfissionaisRouteImport } from './routes/app.profissionais'
 import { Route as AppRelatoriosRouteImport } from './routes/app.relatorios'
 import { Route as AppServicosRouteImport } from './routes/app.servicos'
@@ -147,6 +148,11 @@ const AppPdvRoute = AppPdvRouteImport.update({
   path: '/pdv',
   getParentRoute: () => AppRoute,
 } as any)
+const AppProdutosRoute = AppProdutosRouteImport.update({
+  id: '/produtos',
+  path: '/produtos',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppProfissionaisRoute = AppProfissionaisRouteImport.update({
   id: '/profissionais',
   path: '/profissionais',
@@ -254,6 +260,7 @@ export interface FileRoutesByFullPath {
   '/app/financeiro': typeof AppFinanceiroRoute
   '/app/onboarding': typeof AppOnboardingRoute
   '/app/pdv': typeof AppPdvRoute
+  '/app/produtos': typeof AppProdutosRoute
   '/app/profissionais': typeof AppProfissionaisRoute
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/servicos': typeof AppServicosRoute
@@ -293,6 +300,7 @@ export interface FileRoutesByTo {
   '/app/financeiro': typeof AppFinanceiroRoute
   '/app/onboarding': typeof AppOnboardingRoute
   '/app/pdv': typeof AppPdvRoute
+  '/app/produtos': typeof AppProdutosRoute
   '/app/profissionais': typeof AppProfissionaisRoute
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/servicos': typeof AppServicosRoute
@@ -333,6 +341,7 @@ export interface FileRoutesById {
   '/app/financeiro': typeof AppFinanceiroRoute
   '/app/onboarding': typeof AppOnboardingRoute
   '/app/pdv': typeof AppPdvRoute
+  '/app/produtos': typeof AppProdutosRoute
   '/app/profissionais': typeof AppProfissionaisRoute
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/servicos': typeof AppServicosRoute
@@ -374,6 +383,7 @@ export interface FileRouteTypes {
     | '/app/financeiro'
     | '/app/onboarding'
     | '/app/pdv'
+    | '/app/produtos'
     | '/app/profissionais'
     | '/app/relatorios'
     | '/app/servicos'
@@ -413,6 +423,7 @@ export interface FileRouteTypes {
     | '/app/financeiro'
     | '/app/onboarding'
     | '/app/pdv'
+    | '/app/produtos'
     | '/app/profissionais'
     | '/app/relatorios'
     | '/app/servicos'
@@ -452,6 +463,7 @@ export interface FileRouteTypes {
     | '/app/financeiro'
     | '/app/onboarding'
     | '/app/pdv'
+    | '/app/produtos'
     | '/app/profissionais'
     | '/app/relatorios'
     | '/app/servicos'
@@ -625,6 +637,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPdvRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/produtos': {
+      id: '/app/produtos'
+      path: '/produtos'
+      fullPath: '/app/produtos'
+      preLoaderRoute: typeof AppProdutosRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/profissionais': {
       id: '/app/profissionais'
       path: '/profissionais'
@@ -759,6 +778,7 @@ interface AppRouteChildren {
   AppFinanceiroRoute: typeof AppFinanceiroRoute
   AppOnboardingRoute: typeof AppOnboardingRoute
   AppPdvRoute: typeof AppPdvRoute
+  AppProdutosRoute: typeof AppProdutosRoute
   AppProfissionaisRoute: typeof AppProfissionaisRoute
   AppRelatoriosRoute: typeof AppRelatoriosRoute
   AppServicosRoute: typeof AppServicosRoute
@@ -776,6 +796,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppFinanceiroRoute: AppFinanceiroRoute,
   AppOnboardingRoute: AppOnboardingRoute,
   AppPdvRoute: AppPdvRoute,
+  AppProdutosRoute: AppProdutosRoute,
   AppProfissionaisRoute: AppProfissionaisRoute,
   AppRelatoriosRoute: AppRelatoriosRoute,
   AppServicosRoute: AppServicosRoute,
