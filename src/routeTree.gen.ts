@@ -22,6 +22,7 @@ import { Route as AppAgendaRouteImport } from './routes/app.agenda'
 import { Route as AppAigrowthRouteImport } from './routes/app.aigrowth'
 import { Route as AppBanhoTosaRouteImport } from './routes/app.banho-tosa'
 import { Route as AppClientesRouteImport } from './routes/app.clientes'
+import { Route as AppClinicaRouteImport } from './routes/app.clinica'
 import { Route as AppConfiguracoesRouteImport } from './routes/app.configuracoes'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
 import { Route as AppEquipeRouteImport } from './routes/app.equipe'
@@ -109,6 +110,11 @@ const AppBanhoTosaRoute = AppBanhoTosaRouteImport.update({
 const AppClientesRoute = AppClientesRouteImport.update({
   id: '/clientes',
   path: '/clientes',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppClinicaRoute = AppClinicaRouteImport.update({
+  id: '/clinica',
+  path: '/clinica',
   getParentRoute: () => AppRoute,
 } as any)
 const AppConfiguracoesRoute = AppConfiguracoesRouteImport.update({
@@ -241,6 +247,7 @@ export interface FileRoutesByFullPath {
   '/app/aigrowth': typeof AppAigrowthRoute
   '/app/banho-tosa': typeof AppBanhoTosaRoute
   '/app/clientes': typeof AppClientesRoute
+  '/app/clinica': typeof AppClinicaRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/equipe': typeof AppEquipeRoute
@@ -279,6 +286,7 @@ export interface FileRoutesByTo {
   '/app/aigrowth': typeof AppAigrowthRoute
   '/app/banho-tosa': typeof AppBanhoTosaRoute
   '/app/clientes': typeof AppClientesRoute
+  '/app/clinica': typeof AppClinicaRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/equipe': typeof AppEquipeRoute
@@ -318,6 +326,7 @@ export interface FileRoutesById {
   '/app/aigrowth': typeof AppAigrowthRoute
   '/app/banho-tosa': typeof AppBanhoTosaRoute
   '/app/clientes': typeof AppClientesRoute
+  '/app/clinica': typeof AppClinicaRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/equipe': typeof AppEquipeRoute
@@ -358,6 +367,7 @@ export interface FileRouteTypes {
     | '/app/aigrowth'
     | '/app/banho-tosa'
     | '/app/clientes'
+    | '/app/clinica'
     | '/app/configuracoes'
     | '/app/dashboard'
     | '/app/equipe'
@@ -396,6 +406,7 @@ export interface FileRouteTypes {
     | '/app/aigrowth'
     | '/app/banho-tosa'
     | '/app/clientes'
+    | '/app/clinica'
     | '/app/configuracoes'
     | '/app/dashboard'
     | '/app/equipe'
@@ -434,6 +445,7 @@ export interface FileRouteTypes {
     | '/app/aigrowth'
     | '/app/banho-tosa'
     | '/app/clientes'
+    | '/app/clinica'
     | '/app/configuracoes'
     | '/app/dashboard'
     | '/app/equipe'
@@ -562,6 +574,13 @@ declare module '@tanstack/react-router' {
       path: '/clientes'
       fullPath: '/app/clientes'
       preLoaderRoute: typeof AppClientesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/clinica': {
+      id: '/app/clinica'
+      path: '/clinica'
+      fullPath: '/app/clinica'
+      preLoaderRoute: typeof AppClinicaRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/configuracoes': {
@@ -733,6 +752,7 @@ interface AppRouteChildren {
   AppAigrowthRoute: typeof AppAigrowthRoute
   AppBanhoTosaRoute: typeof AppBanhoTosaRoute
   AppClientesRoute: typeof AppClientesRoute
+  AppClinicaRoute: typeof AppClinicaRoute
   AppConfiguracoesRoute: typeof AppConfiguracoesRoute
   AppDashboardRoute: typeof AppDashboardRoute
   AppEquipeRoute: typeof AppEquipeRoute
@@ -749,6 +769,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppAigrowthRoute: AppAigrowthRoute,
   AppBanhoTosaRoute: AppBanhoTosaRoute,
   AppClientesRoute: AppClientesRoute,
+  AppClinicaRoute: AppClinicaRoute,
   AppConfiguracoesRoute: AppConfiguracoesRoute,
   AppDashboardRoute: AppDashboardRoute,
   AppEquipeRoute: AppEquipeRoute,
