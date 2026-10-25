@@ -49,14 +49,20 @@ export type Database = {
           customer_id: string | null
           customer_name: string | null
           customer_phone: string | null
+          expected_exit_at: string | null
           id: string
+          is_grooming: boolean
           notes: string | null
+          payment_status: string
+          pet_id: string | null
+          pet_name: string | null
           price: number | null
           professional_id: string
           professional_name: string | null
           scheduled_at: string
           service_id: string
           service_name: string | null
+          slot_number: number | null
           source: Database["public"]["Enums"]["appointment_source"]
           status: Database["public"]["Enums"]["appointment_status"]
           updated_at: string
@@ -68,14 +74,20 @@ export type Database = {
           customer_id?: string | null
           customer_name?: string | null
           customer_phone?: string | null
+          expected_exit_at?: string | null
           id?: string
+          is_grooming?: boolean
           notes?: string | null
+          payment_status?: string
+          pet_id?: string | null
+          pet_name?: string | null
           price?: number | null
           professional_id: string
           professional_name?: string | null
           scheduled_at: string
           service_id: string
           service_name?: string | null
+          slot_number?: number | null
           source?: Database["public"]["Enums"]["appointment_source"]
           status?: Database["public"]["Enums"]["appointment_status"]
           updated_at?: string
@@ -87,14 +99,20 @@ export type Database = {
           customer_id?: string | null
           customer_name?: string | null
           customer_phone?: string | null
+          expected_exit_at?: string | null
           id?: string
+          is_grooming?: boolean
           notes?: string | null
+          payment_status?: string
+          pet_id?: string | null
+          pet_name?: string | null
           price?: number | null
           professional_id?: string
           professional_name?: string | null
           scheduled_at?: string
           service_id?: string
           service_name?: string | null
+          slot_number?: number | null
           source?: Database["public"]["Enums"]["appointment_source"]
           status?: Database["public"]["Enums"]["appointment_status"]
           updated_at?: string
@@ -421,6 +439,185 @@ export type Database = {
           },
         ]
       }
+      medical_records: {
+        Row: {
+          company_id: string
+          complaint: string | null
+          created_at: string
+          diagnosis: string | null
+          id: string
+          pet_id: string
+          record_date: string
+          treatment: string | null
+          vet_name: string | null
+          weight_kg: number | null
+        }
+        Insert: {
+          company_id: string
+          complaint?: string | null
+          created_at?: string
+          diagnosis?: string | null
+          id?: string
+          pet_id: string
+          record_date?: string
+          treatment?: string | null
+          vet_name?: string | null
+          weight_kg?: number | null
+        }
+        Update: {
+          company_id?: string
+          complaint?: string | null
+          created_at?: string
+          diagnosis?: string | null
+          id?: string
+          pet_id?: string
+          record_date?: string
+          treatment?: string | null
+          vet_name?: string | null
+          weight_kg?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "medical_records_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "medical_records_pet_id_fkey"
+            columns: ["pet_id"]
+            isOneToOne: false
+            referencedRelation: "pets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      pets: {
+        Row: {
+          birth_date: string | null
+          breed: string | null
+          company_id: string
+          created_at: string
+          customer_id: string | null
+          id: string
+          name: string
+          notes: string | null
+          sex: string | null
+          species: string | null
+          updated_at: string
+          weight_kg: number | null
+        }
+        Insert: {
+          birth_date?: string | null
+          breed?: string | null
+          company_id: string
+          created_at?: string
+          customer_id?: string | null
+          id?: string
+          name: string
+          notes?: string | null
+          sex?: string | null
+          species?: string | null
+          updated_at?: string
+          weight_kg?: number | null
+        }
+        Update: {
+          birth_date?: string | null
+          breed?: string | null
+          company_id?: string
+          created_at?: string
+          customer_id?: string | null
+          id?: string
+          name?: string
+          notes?: string | null
+          sex?: string | null
+          species?: string | null
+          updated_at?: string
+          weight_kg?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pets_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pets_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customer"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      products: {
+        Row: {
+          active: boolean
+          barcode: string | null
+          category: string | null
+          company_id: string
+          cost_price: number | null
+          created_at: string
+          description: string | null
+          id: string
+          min_stock_alert: number | null
+          name: string
+          price: number | null
+          sale_price: number | null
+          sku: string | null
+          stock_quantity: number
+          unit: string | null
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          barcode?: string | null
+          category?: string | null
+          company_id: string
+          cost_price?: number | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          min_stock_alert?: number | null
+          name: string
+          price?: number | null
+          sale_price?: number | null
+          sku?: string | null
+          stock_quantity?: number
+          unit?: string | null
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          barcode?: string | null
+          category?: string | null
+          company_id?: string
+          cost_price?: number | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          min_stock_alert?: number | null
+          name?: string
+          price?: number | null
+          sale_price?: number | null
+          sku?: string | null
+          stock_quantity?: number
+          unit?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       professional: {
         Row: {
           active: boolean
@@ -503,6 +700,165 @@ export type Database = {
             columns: ["service_id"]
             isOneToOne: false
             referencedRelation: "service"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sale_items: {
+        Row: {
+          appointment_id: string | null
+          company_id: string
+          created_at: string
+          description: string | null
+          discount: number
+          id: string
+          item_name: string
+          item_type: string
+          product_id: string | null
+          quantity: number
+          sale_id: string
+          service_id: string | null
+          total_price: number
+          unit_price: number
+        }
+        Insert: {
+          appointment_id?: string | null
+          company_id: string
+          created_at?: string
+          description?: string | null
+          discount?: number
+          id?: string
+          item_name: string
+          item_type: string
+          product_id?: string | null
+          quantity?: number
+          sale_id: string
+          service_id?: string | null
+          total_price?: number
+          unit_price?: number
+        }
+        Update: {
+          appointment_id?: string | null
+          company_id?: string
+          created_at?: string
+          description?: string | null
+          discount?: number
+          id?: string
+          item_name?: string
+          item_type?: string
+          product_id?: string | null
+          quantity?: number
+          sale_id?: string
+          service_id?: string | null
+          total_price?: number
+          unit_price?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sale_items_appointment_id_fkey"
+            columns: ["appointment_id"]
+            isOneToOne: false
+            referencedRelation: "appointment"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sale_items_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sale_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sale_items_sale_id_fkey"
+            columns: ["sale_id"]
+            isOneToOne: false
+            referencedRelation: "sales"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sale_items_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "service"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sales: {
+        Row: {
+          amount_paid: number
+          change_amount: number
+          company_id: string
+          created_at: string
+          customer_id: string | null
+          discount: number
+          discount_amount: number
+          id: string
+          notes: string | null
+          payment_method: string | null
+          sale_number: number
+          seller_user_id: string | null
+          status: string
+          subtotal: number
+          total: number
+          total_amount: number
+        }
+        Insert: {
+          amount_paid?: number
+          change_amount?: number
+          company_id: string
+          created_at?: string
+          customer_id?: string | null
+          discount?: number
+          discount_amount?: number
+          id?: string
+          notes?: string | null
+          payment_method?: string | null
+          sale_number?: number
+          seller_user_id?: string | null
+          status?: string
+          subtotal?: number
+          total?: number
+          total_amount?: number
+        }
+        Update: {
+          amount_paid?: number
+          change_amount?: number
+          company_id?: string
+          created_at?: string
+          customer_id?: string | null
+          discount?: number
+          discount_amount?: number
+          id?: string
+          notes?: string | null
+          payment_method?: string | null
+          sale_number?: number
+          seller_user_id?: string | null
+          status?: string
+          subtotal?: number
+          total?: number
+          total_amount?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sales_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sales_customer_id_fkey"
+            columns: ["customer_id"]
+            isOneToOne: false
+            referencedRelation: "customer"
             referencedColumns: ["id"]
           },
         ]
@@ -623,6 +979,60 @@ export type Database = {
         }
         Relationships: []
       }
+      vaccines: {
+        Row: {
+          applied_at: string | null
+          company_id: string
+          created_at: string
+          due_date: string | null
+          id: string
+          next_due_date: string | null
+          notes: string | null
+          pet_id: string
+          status: string
+          vaccine_name: string
+        }
+        Insert: {
+          applied_at?: string | null
+          company_id: string
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          next_due_date?: string | null
+          notes?: string | null
+          pet_id: string
+          status?: string
+          vaccine_name: string
+        }
+        Update: {
+          applied_at?: string | null
+          company_id?: string
+          created_at?: string
+          due_date?: string | null
+          id?: string
+          next_due_date?: string | null
+          notes?: string | null
+          pet_id?: string
+          status?: string
+          vaccine_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vaccines_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "vaccines_pet_id_fkey"
+            columns: ["pet_id"]
+            isOneToOne: false
+            referencedRelation: "pets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -643,6 +1053,8 @@ export type Database = {
         | "concluido"
         | "cancelado"
         | "nao_compareceu"
+        | "pendente"
+        | "no_show"
       ciclo_type: "mensal" | "anual"
       commission_type: "percent" | "fixed"
       customer_status: "active" | "inactive" | "vip"
@@ -793,6 +1205,8 @@ export const Constants = {
         "concluido",
         "cancelado",
         "nao_compareceu",
+        "pendente",
+        "no_show",
       ],
       ciclo_type: ["mensal", "anual"],
       commission_type: ["percent", "fixed"],
