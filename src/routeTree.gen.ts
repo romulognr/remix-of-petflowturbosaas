@@ -20,12 +20,14 @@ import { Route as TrocarSenhaRouteImport } from './routes/trocar-senha'
 import { Route as AgendarSlugRouteImport } from './routes/agendar.$slug'
 import { Route as AppAgendaRouteImport } from './routes/app.agenda'
 import { Route as AppAigrowthRouteImport } from './routes/app.aigrowth'
+import { Route as AppBanhoTosaRouteImport } from './routes/app.banho-tosa'
 import { Route as AppClientesRouteImport } from './routes/app.clientes'
 import { Route as AppConfiguracoesRouteImport } from './routes/app.configuracoes'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
 import { Route as AppEquipeRouteImport } from './routes/app.equipe'
 import { Route as AppFinanceiroRouteImport } from './routes/app.financeiro'
 import { Route as AppOnboardingRouteImport } from './routes/app.onboarding'
+import { Route as AppPdvRouteImport } from './routes/app.pdv'
 import { Route as AppProfissionaisRouteImport } from './routes/app.profissionais'
 import { Route as AppRelatoriosRouteImport } from './routes/app.relatorios'
 import { Route as AppServicosRouteImport } from './routes/app.servicos'
@@ -99,6 +101,11 @@ const AppAigrowthRoute = AppAigrowthRouteImport.update({
   path: '/aigrowth',
   getParentRoute: () => AppRoute,
 } as any)
+const AppBanhoTosaRoute = AppBanhoTosaRouteImport.update({
+  id: '/banho-tosa',
+  path: '/banho-tosa',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppClientesRoute = AppClientesRouteImport.update({
   id: '/clientes',
   path: '/clientes',
@@ -127,6 +134,11 @@ const AppFinanceiroRoute = AppFinanceiroRouteImport.update({
 const AppOnboardingRoute = AppOnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPdvRoute = AppPdvRouteImport.update({
+  id: '/pdv',
+  path: '/pdv',
   getParentRoute: () => AppRoute,
 } as any)
 const AppProfissionaisRoute = AppProfissionaisRouteImport.update({
@@ -227,12 +239,14 @@ export interface FileRoutesByFullPath {
   '/agendar/$slug': typeof AgendarSlugRoute
   '/app/agenda': typeof AppAgendaRoute
   '/app/aigrowth': typeof AppAigrowthRoute
+  '/app/banho-tosa': typeof AppBanhoTosaRoute
   '/app/clientes': typeof AppClientesRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/equipe': typeof AppEquipeRoute
   '/app/financeiro': typeof AppFinanceiroRoute
   '/app/onboarding': typeof AppOnboardingRoute
+  '/app/pdv': typeof AppPdvRoute
   '/app/profissionais': typeof AppProfissionaisRoute
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/servicos': typeof AppServicosRoute
@@ -263,12 +277,14 @@ export interface FileRoutesByTo {
   '/agendar/$slug': typeof AgendarSlugRoute
   '/app/agenda': typeof AppAgendaRoute
   '/app/aigrowth': typeof AppAigrowthRoute
+  '/app/banho-tosa': typeof AppBanhoTosaRoute
   '/app/clientes': typeof AppClientesRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/equipe': typeof AppEquipeRoute
   '/app/financeiro': typeof AppFinanceiroRoute
   '/app/onboarding': typeof AppOnboardingRoute
+  '/app/pdv': typeof AppPdvRoute
   '/app/profissionais': typeof AppProfissionaisRoute
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/servicos': typeof AppServicosRoute
@@ -300,12 +316,14 @@ export interface FileRoutesById {
   '/agendar/$slug': typeof AgendarSlugRoute
   '/app/agenda': typeof AppAgendaRoute
   '/app/aigrowth': typeof AppAigrowthRoute
+  '/app/banho-tosa': typeof AppBanhoTosaRoute
   '/app/clientes': typeof AppClientesRoute
   '/app/configuracoes': typeof AppConfiguracoesRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/equipe': typeof AppEquipeRoute
   '/app/financeiro': typeof AppFinanceiroRoute
   '/app/onboarding': typeof AppOnboardingRoute
+  '/app/pdv': typeof AppPdvRoute
   '/app/profissionais': typeof AppProfissionaisRoute
   '/app/relatorios': typeof AppRelatoriosRoute
   '/app/servicos': typeof AppServicosRoute
@@ -338,12 +356,14 @@ export interface FileRouteTypes {
     | '/agendar/$slug'
     | '/app/agenda'
     | '/app/aigrowth'
+    | '/app/banho-tosa'
     | '/app/clientes'
     | '/app/configuracoes'
     | '/app/dashboard'
     | '/app/equipe'
     | '/app/financeiro'
     | '/app/onboarding'
+    | '/app/pdv'
     | '/app/profissionais'
     | '/app/relatorios'
     | '/app/servicos'
@@ -374,12 +394,14 @@ export interface FileRouteTypes {
     | '/agendar/$slug'
     | '/app/agenda'
     | '/app/aigrowth'
+    | '/app/banho-tosa'
     | '/app/clientes'
     | '/app/configuracoes'
     | '/app/dashboard'
     | '/app/equipe'
     | '/app/financeiro'
     | '/app/onboarding'
+    | '/app/pdv'
     | '/app/profissionais'
     | '/app/relatorios'
     | '/app/servicos'
@@ -410,12 +432,14 @@ export interface FileRouteTypes {
     | '/agendar/$slug'
     | '/app/agenda'
     | '/app/aigrowth'
+    | '/app/banho-tosa'
     | '/app/clientes'
     | '/app/configuracoes'
     | '/app/dashboard'
     | '/app/equipe'
     | '/app/financeiro'
     | '/app/onboarding'
+    | '/app/pdv'
     | '/app/profissionais'
     | '/app/relatorios'
     | '/app/servicos'
@@ -526,6 +550,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAigrowthRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/banho-tosa': {
+      id: '/app/banho-tosa'
+      path: '/banho-tosa'
+      fullPath: '/app/banho-tosa'
+      preLoaderRoute: typeof AppBanhoTosaRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/clientes': {
       id: '/app/clientes'
       path: '/clientes'
@@ -566,6 +597,13 @@ declare module '@tanstack/react-router' {
       path: '/onboarding'
       fullPath: '/app/onboarding'
       preLoaderRoute: typeof AppOnboardingRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/pdv': {
+      id: '/app/pdv'
+      path: '/pdv'
+      fullPath: '/app/pdv'
+      preLoaderRoute: typeof AppPdvRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/profissionais': {
@@ -693,12 +731,14 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppAgendaRoute: typeof AppAgendaRoute
   AppAigrowthRoute: typeof AppAigrowthRoute
+  AppBanhoTosaRoute: typeof AppBanhoTosaRoute
   AppClientesRoute: typeof AppClientesRoute
   AppConfiguracoesRoute: typeof AppConfiguracoesRoute
   AppDashboardRoute: typeof AppDashboardRoute
   AppEquipeRoute: typeof AppEquipeRoute
   AppFinanceiroRoute: typeof AppFinanceiroRoute
   AppOnboardingRoute: typeof AppOnboardingRoute
+  AppPdvRoute: typeof AppPdvRoute
   AppProfissionaisRoute: typeof AppProfissionaisRoute
   AppRelatoriosRoute: typeof AppRelatoriosRoute
   AppServicosRoute: typeof AppServicosRoute
@@ -707,12 +747,14 @@ interface AppRouteChildren {
 const AppRouteChildren: AppRouteChildren = {
   AppAgendaRoute: AppAgendaRoute,
   AppAigrowthRoute: AppAigrowthRoute,
+  AppBanhoTosaRoute: AppBanhoTosaRoute,
   AppClientesRoute: AppClientesRoute,
   AppConfiguracoesRoute: AppConfiguracoesRoute,
   AppDashboardRoute: AppDashboardRoute,
   AppEquipeRoute: AppEquipeRoute,
   AppFinanceiroRoute: AppFinanceiroRoute,
   AppOnboardingRoute: AppOnboardingRoute,
+  AppPdvRoute: AppPdvRoute,
   AppProfissionaisRoute: AppProfissionaisRoute,
   AppRelatoriosRoute: AppRelatoriosRoute,
   AppServicosRoute: AppServicosRoute,

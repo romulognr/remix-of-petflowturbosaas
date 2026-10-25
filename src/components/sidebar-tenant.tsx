@@ -2,6 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import {
   LayoutDashboard, CalendarDays, Users, PawPrint, UserCog, DollarSign,
   Briefcase, BarChart3, Sparkles, Settings, LogOut, Shield, Scissors,
+  ShoppingCart, Bath, Stethoscope,
 } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 
@@ -19,6 +20,9 @@ const GROUPS = [
   {
     label: "Operacional",
     items: [
+      { to: "/app/pdv", label: "PDV", icon: ShoppingCart },
+      { to: "/app/banho-tosa", label: "Banho e Tosa", icon: Bath },
+      { to: "/app/clinica", label: "Clínica Veterinária", icon: Stethoscope },
       { to: "/app/financeiro", label: "Financeiro", icon: DollarSign },
       { to: "/app/relatorios", label: "Relatórios", icon: BarChart3 },
       { to: "/app/aigrowth", label: "AI Growth", icon: Sparkles, badge: "IA" },
